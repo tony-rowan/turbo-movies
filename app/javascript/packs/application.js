@@ -15,3 +15,5 @@ Turbolinks.start()
 ActiveStorage.start()
 
 import "@hotwired/turbo-rails"
+
+import "controllers"
