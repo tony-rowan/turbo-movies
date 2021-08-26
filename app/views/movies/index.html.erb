@@ -1,9 +1,13 @@
-<div class="p-4" data-controller="navigation" data-action="turbo:before-fetch-request@document->navigation#displayLoading turbo:before-fetch-response@document->navigation#displayContent">
+<div class="p-4" data-controller="navigation" data-action="turbo:before-fetch-response@document->navigation#displayContent">
   <%= turbo_frame_tag :index, class: "flex gap-x-8 overflow-x-scroll mb-12" do %>
     <% @movies.each do |movie| %>
-      <%= link_to movie_path(movie.id), class: "flex-none flex flex-col w-40 text-center", data: { turbo_frame: "details" } do %>
-        <%= image_tag(movie.image, class: "h-60 mb-2") %>
-        <div class="font-semibold">
+      <%= link_to movie_path(movie.id), class: "flex-none flex flex-col w-40 text-center", data: {
+        turbo_frame: "details",
+        action: "turbo:click->navigation#displayLoading",
+        navigation_target: "link"
+      } do %>
+        <%= image_tag(movie.image, class: "h-60") %>
+        <div class="font-semibold p-2">
           <%= movie.title %>
         </div>
       <% end %>
