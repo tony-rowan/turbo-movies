@@ -1,3 +1,14 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+.button {
+  @apply rounded-sm;
+  @apply hover:bg-yellow-600;
+  @apply border-4 border-transparent;
+}
+
+.button.button--selected {
+  @apply bg-yellow-600;
+  @apply border-4 border-yellow-700;
+}

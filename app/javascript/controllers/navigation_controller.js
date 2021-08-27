@@ -2,6 +2,7 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
   static targets = ['content', 'loading', 'link'];
+  static classes = [ 'selected' ];
 
   displayLoading(event) {
     this.loadingTarget.classList.remove('hidden');
@@ -20,9 +21,9 @@ export default class extends Controller {
   updateLinks(value) {
     this.linkTargets.forEach((link) => {
 
-      link.classList.remove('bg-blue-400');
+      link.classList.remove(this.selectedClass);
       if (link.href === value) {
-        link.classList.add('bg-blue-400');
+        link.classList.add(this.selectedClass);
       }
     })
   }

@@ -1,25 +1,16 @@
 <%= turbo_frame_tag :details do %>
-  <p>
-    Title: <%= @movie.title %>
-  </p>
+  <h1 class="text-2xl font-semibold mb-2">
+    <%= @movie.title %>
+  </h1>
+
+  <div class="flex gap-x-4 text-gray-700 mb-4">
+    <p><%= @movie.director %></p>
+    <p><%= @movie.length %></p>
+    <p><%= @movie.year %></p>
+    <p><%= @movie.genre %></p>
+  </div>
 
   <p>
-    Summary: <%= @movie.summary %>
-  </p>
-
-  <p>
-    Director: <%= @movie.director %>
-  </p>
-
-  <p>
-    Length: <%= @movie.length %>
-  </p>
-
-  <p>
-    Genre: <%= @movie.genre %>
-  </p>
-
-  <p>
-    Year: <%= @movie.year %>
+    <%= @movie.summary %>
   </p>
 <% end %>
