@@ -1,10 +1,24 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    @movies = movies
+    @query = query
   end
 
   def show
-    sleep 1
     @movie = Movie.find(params[:id])
+  end
+
+  private
+
+  def movies
+    if query
+      Movie.where("title ILIKE ?", "%#{query}%")
+    else
+      Movie.all
+    end
+  end
+
+  def query
+    params[:query]
   end
 end

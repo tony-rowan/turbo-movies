@@ -1,18 +1,46 @@
-<div class="flex h-screen" data-controller="navigation" data-action="turbo:before-fetch-response@document->navigation#displayContent" data-navigation-selected-class="button--selected">
-  <%= turbo_frame_tag :index, class: "bg-gray-200 border-r border-gray-300 grid grid-cols-2 gap-6 p-12 flex-none overflow-y-scroll shadow-inner" do %>
-    <% @movies.each do |movie| %>
-      <%= link_to movie_path(movie.id), class: "flex-none flex flex-col w-40 text-center button", data: {
-        turbo_frame: "details",
-        action: "turbo:click->navigation#displayLoading",
-        navigation_target: "link"
-      } do %>
-        <%= image_tag(movie.image, class: "h-60") %>
-        <div class="font-semibold p-2">
-          <%= movie.title %>
-        </div>
+<div class="flex h-screen"
+  data-controller="navigation"
+  data-action="turbo:before-fetch-response@document->navigation#displayContent"
+  data-navigation-selected-class="button--selected">
+
+  <div class="bg-gray-200 border-r border-gray-300 flex-none overflow-y-scroll shadow-inner">
+    <%= form_with(
+      url: movies_path,
+      method: :get,
+      data: {
+        controller: "submit-form",
+        submit_form_target: "form",
+        turbo_frame: :index
+      }
+    ) do |f| %>
+      <%= f.text_field(
+        :query,
+        value: @query,
+        placeholder: "Search",
+        class: "px-8 py-4 w-full text-xl shadow-inner focus:ring-2 focus:ring-indigo-400",
+        data: {
+          action: "input->submit-form#submit"
+        }
+      ) %>
+    <% end %>
+
+    <%= turbo_frame_tag :index, class: "grid grid-cols-2 gap-6 p-6" do %>
+      <% @movies.each do |movie| %>
+        <%= link_to movie_path(movie.id),
+          class: "flex-none flex flex-col w-40 text-center button",
+          data: {
+            turbo_frame: "details",
+            action: "turbo:click->navigation#displayLoading",
+            navigation_target: "link"
+          } do %>
+          <%= image_tag(movie.image, class: "h-60") %>
+          <div class="font-semibold p-2">
+            <%= movie.title %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
+  </div>
 
   <div class="p-12">
     <%= turbo_frame_tag :details, data: { navigation_target: "content" } do %>
@@ -23,4 +51,5 @@
       Loading...
     </div>
   </div>
+
 </div>
