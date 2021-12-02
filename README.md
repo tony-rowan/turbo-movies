@@ -1,24 +1,25 @@
-# README
+# Turbo Movies
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A single page movie application implemented with hotwire-turbo.
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+You will need Docker, `docker-compose` and `asdf` to install the project
+dependencies and backing services.
 
-* System dependencies
+## Getting Set Up
 
-* Configuration
+Setup is very simple at the moment, just install the project dependencies
 
-* Database creation
+```bash
+asdf install
+```
 
-* Database initialization
+and then run
 
-* How to run the test suite
+```bash
+bin/setup
+rails db:seed
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+and you're good to go!
