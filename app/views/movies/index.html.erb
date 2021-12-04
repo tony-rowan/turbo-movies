@@ -1,17 +1,19 @@
 <div class="flex h-screen" data-controller="navigation" data-action="turbo:before-fetch-response@document->navigation#displayContent" data-navigation-selected-class="button--selected">
-  <%= turbo_frame_tag :index, class: "bg-gray-200 border-r border-gray-300 grid grid-cols-2 gap-6 p-12 flex-none overflow-y-scroll shadow-inner" do %>
-    <% @movies.each do |movie| %>
-      <%= link_to movie_path(movie.id), class: "flex-none flex flex-col w-40 text-center button", data: {
-        turbo_frame: "details",
-        action: "turbo:click->navigation#displayLoading",
-        navigation_target: "link"
-      } do %>
-        <%= image_tag(movie.image, class: "h-60") %>
-        <div class="font-semibold p-2">
-          <%= movie.title %>
-        </div>
+  <%= turbo_frame_tag :index, class: "bg-gray-200 border-r border-gray-300 p-12 flex-none overflow-y-scroll shadow-inner" do %>
+    <div class="grid grid-cols-2 gap-6">
+      <% @movies.each do |movie| %>
+        <%= link_to movie_path(movie.id), class: "flex-none flex flex-col w-40 text-center button", data: {
+          turbo_frame: "details",
+          action: "turbo:click->navigation#displayLoading",
+          navigation_target: "link"
+        } do %>
+          <%= image_tag(movie.image, class: "h-60") %>
+          <div class="font-semibold p-2">
+            <%= movie.title %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   <% end %>
 
   <div class="p-12">
