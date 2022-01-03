@@ -1,4 +1,4 @@
-ruby "3.0.2"
+ruby "3.1.0"
 
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
@@ -7,11 +7,14 @@ gem "rails"
 
 gem "bcrypt"
 gem "bootsnap", require: false
+gem "cssbundling-rails"
+gem "jsbundling-rails"
 gem "pg"
 gem "puma"
 gem "redis"
+gem "sprockets-rails"
+gem "stimulus-rails"
 gem "turbo-rails"
-gem "webpacker"
 
 group :development do
   gem "listen"
