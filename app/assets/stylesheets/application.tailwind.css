@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 @layer components {
-	.button {
-	  @apply rounded-sm;
-	  @apply hover:bg-yellow-600;
-	  @apply border-4 border-transparent;
-	}
+  .button {
+    @apply rounded-sm;
+    @apply hover:bg-yellow-600;
+    @apply border-4 border-transparent;
+  }
 
-	.button.button--selected {
-	  @apply bg-yellow-600;
-	  @apply border-4 border-yellow-700;
-	}
+  .button.button--selected {
+    @apply bg-yellow-600;
+    @apply border-4 border-yellow-700;
+  }
 }
