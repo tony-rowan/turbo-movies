@@ -12,8 +12,16 @@
 
   <div class="flex gap-x-3 mb-4">
     <% Movie::MAX_RATING.times do |n| %>
-      <%= inline_svg_tag("star.svg",
-        class: "w-8 h-8 #{star_rating_class(@movie, n)}") %>
+      <%= button_to movie_path(@movie),
+        method: :patch,
+        params: { movie: { rating: n + 1 } } do %>
+        <%= inline_svg_tag("star.svg",
+          class: "
+            w-8 h-8
+            hover:fill-yellow-500 hover:stroke-yellow-500
+            #{star_rating_class(@movie, n)}
+          ") %>
+      <% end %>
     <% end %>
   </div>
 
