@@ -1,13 +1,13 @@
 name: Lint
 
 env:
-  NODE_VERSION: '16.13.0'
+  NODE_VERSION: "16.13.0"
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   prettier:
