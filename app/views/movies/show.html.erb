@@ -10,8 +10,11 @@
     <p><%= @movie.genre %></p>
   </div>
 
-  <div class="mb-4">
-    Rating: <%= @movie.rating %>
+  <div class="flex gap-x-3 mb-4">
+    <% Movie::MAX_RATING.times do |n| %>
+      <%= inline_svg_tag("star.svg",
+        class: "w-8 h-8 #{star_rating_class(@movie, n)}") %>
+    <% end %>
   </div>
 
   <p>

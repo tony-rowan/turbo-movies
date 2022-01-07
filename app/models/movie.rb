@@ -1,3 +1,5 @@
 class Movie < ApplicationRecord
-  validates :rating, numericality: { in: 0..5 }
+  MAX_RATING = 5
+
+  validates :rating, numericality: { in: 0..MAX_RATING }
 end
