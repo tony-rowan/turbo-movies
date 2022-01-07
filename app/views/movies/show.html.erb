@@ -10,17 +10,21 @@
     <p><%= @movie.genre %></p>
   </div>
 
-  <div class="flex gap-x-3 mb-4">
+  <div class="flex gap-x-3 mb-4"
+    data-controller="star-bar"
+    data-star-bar-hover-class="fill-yellow-500 stroke-yellow-500">
     <% Movie::MAX_RATING.times do |n| %>
       <%= button_to movie_path(@movie),
         method: :patch,
         params: { movie: { rating: n + 1 } } do %>
         <%= inline_svg_tag("star.svg",
-          class: "
-            w-8 h-8
-            hover:fill-yellow-500 hover:stroke-yellow-500
-            #{star_rating_class(@movie, n)}
-          ") %>
+          class: "w-8 h-8 #{star_rating_class(@movie, n)}",
+          data: {
+            star_bar_target: "star",
+            star_bar_star_index_param: n,
+            action: "pointerenter->star-bar#enter
+              pointerleave->star-bar#leave"
+          }) %>
       <% end %>
     <% end %>
     <% if @toast %>

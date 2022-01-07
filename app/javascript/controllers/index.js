@@ -7,5 +7,8 @@ import { application } from "./application";
 import NavigationController from "./navigation_controller.js";
 application.register("navigation", NavigationController);
 
-import SubmitFormController from "./submit_form_controller.js";
-application.register("submit-form", SubmitFormController);
+import StarBarController from "./star_bar_controller.js"
+application.register("star-bar", StarBarController)
+
+import SubmitFormController from "./submit_form_controller.js"
+application.register("submit-form", SubmitFormController)
