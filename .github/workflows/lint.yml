@@ -13,10 +13,14 @@ jobs:
   prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: NodeJS
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - uses: actions/cache@v2
+      - name: Cache
+        uses: actions/cache@v2
         with:
           path: |
             node_modules
@@ -24,5 +28,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - run: yarn install
-      - run: yarn prettier --check .
+      - name: Yarn
+        run: yarn install
+      - name: Prettier
+        run: yarn prettier --check .
