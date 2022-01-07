@@ -13,4 +13,30 @@
     @apply bg-yellow-600;
     @apply border-4 border-yellow-700;
   }
+
+	.toast {
+	  animation: toast 3s linear 1 both;
+	}
+
+	@keyframes toast {
+	  0% {
+	    opacity: 0.0;
+	    visibility: hidden;
+	  }
+
+	  3% {
+	    opacity: 1.0;
+	    visibility: visible;
+	  }
+
+	  80% {
+	    opacity: 1.0;
+	    visibility: visible;
+	  }
+
+	  100% {
+	    opacity: 0.0;
+	    visibility: hidden;
+	  }
+	}
 }
