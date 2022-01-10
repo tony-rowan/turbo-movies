@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static targets = ["star"];
@@ -13,7 +13,7 @@ export default class extends Controller {
   }
 
   _fillToStar(star) {
-     this.starTargets.forEach((target, index) => {
+    this.starTargets.forEach((target, index) => {
       if (index <= star) {
         target.classList.add(this.hoverClass);
       } else {
