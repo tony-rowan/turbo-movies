@@ -83,6 +83,9 @@ GEM
       activesupport (>= 5.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
+    inline_svg (1.7.2)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-wait (0.2.1)
     jsbundling-rails (1.0.0)
       railties (>= 6.0.0)
@@ -217,6 +220,7 @@ DEPENDENCIES
   bcrypt
   bootsnap
   cssbundling-rails
+  inline_svg
   jsbundling-rails
   listen
   pg

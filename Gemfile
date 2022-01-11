@@ -8,6 +8,7 @@ gem "rails"
 gem "bcrypt"
 gem "bootsnap", require: false
 gem "cssbundling-rails"
+gem "inline_svg"
 gem "jsbundling-rails"
 gem "pg"
 gem "puma"

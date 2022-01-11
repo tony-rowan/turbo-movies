@@ -8,6 +8,18 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
   end
 
+  def update
+    @movie = Movie.find(params[:id])
+
+    if @movie.update(rating: params[:movie][:rating])
+      @toast = :success
+    else
+      @toast = :warning
+    end
+
+    render :show
+  end
+
   private
 
   def movies
