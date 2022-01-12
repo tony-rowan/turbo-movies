@@ -1,6 +1,7 @@
 name: Lint
 
 env:
+  RUBY_VERSION: "3.1.0"
   NODE_VERSION: "16.13.0"
 
 on:
@@ -10,12 +11,30 @@ on:
     branches: [main]
 
 jobs:
+  standardrb:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Bundle
+        run: bundle install
+      - name: StandardRB
+        run: bundle exec standardrb
   prettier:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: NodeJS
+      - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}

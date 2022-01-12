@@ -11,10 +11,10 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
 
-    if @movie.update(rating: params[:movie][:rating])
-      @toast = :success
+    @toast = if @movie.update(rating: params[:movie][:rating])
+      :success
     else
-      @toast = :warning
+      :warning
     end
 
     render :show
