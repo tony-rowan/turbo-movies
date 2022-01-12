@@ -20,6 +20,5 @@ gem "turbo-rails"
 group :development do
   gem "listen"
   gem "standard"
-  gem "spring"
   gem "web-console"
 end
