@@ -23,3 +23,11 @@ rails db:seed
 ```
 
 and you're good to go!
+
+## Testing
+
+Running the tests is equally simple. Prefer writing system tests for new features.
+
+```bash
+rails test:all
+```
