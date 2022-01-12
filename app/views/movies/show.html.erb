@@ -16,7 +16,8 @@
     <% Movie::MAX_RATING.times do |n| %>
       <%= button_to movie_path(@movie),
         method: :patch,
-        params: { movie: { rating: n + 1 } } do %>
+        params: { movie: { rating: n + 1 } },
+        title: "Rate #{n + 1} Stars" do %>
         <%= inline_svg_tag("star.svg",
           class: "w-8 h-8 #{star_rating_class(@movie, n)}",
           data: {

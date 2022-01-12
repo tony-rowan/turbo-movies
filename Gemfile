@@ -22,3 +22,8 @@ group :development do
   gem "standard"
   gem "web-console"
 end
+
+group :test do
+  gem "capybara"
+  gem "selenium-webdriver"
+end
