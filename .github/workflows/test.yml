@@ -1,0 +1,48 @@
+name: Test
+
+env:
+  RUBY_VERSION: "3.1.0"
+  NODE_VERSION: "16.13.0"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "yarn"
+      - name: Run bundle install
+        run: bin/bundle install
+      - name: Run yarn install
+        run: bin/yarn install
+      - name: Setup DB
+        run: bin/rails db:setup && bin/rails db:migrate
+      - name: Run all tests
+        run: bin/rails test:all
