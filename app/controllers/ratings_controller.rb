@@ -2,9 +2,9 @@ class RatingsController < ApplicationController
   def update
     @movie = Movie.find(params[:movie_id])
     @toast = if @movie.update(rating: params[:rating])
-      "Rating Added!"
+      { message: "Rating Added!", type: :success }
     else
-      "Could not apply rating, please try again later"
+      { message: "Could not apply rating, please try again later", type: :error }
     end
   end
 end

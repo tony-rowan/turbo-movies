@@ -1,2 +1,2 @@
 <%= turbo_stream.update "details", @movie %>
-<%= turbo_stream.update "toasts", partial: "application/toast" %>
+<%= turbo_stream.update "toasts", partial: "application/toast", locals: @toast %>
