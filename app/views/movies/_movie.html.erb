@@ -1,0 +1,36 @@
+<%= turbo_frame_tag :details do %>
+  <h1 class="text-2xl font-semibold mb-2">
+    <%= movie.title %>
+  </h1>
+
+  <div class="flex gap-x-4 text-gray-700 mb-4">
+    <p><%= movie.director %></p>
+    <p><%= movie.length %></p>
+    <p><%= movie.year %></p>
+    <p><%= movie.genre %></p>
+  </div>
+
+  <div class="flex gap-x-3 mb-4"
+    data-controller="star-bar"
+    data-star-bar-hover-class="fill-yellow-500 stroke-yellow-500">
+    <% Movie::MAX_RATING.times do |n| %>
+      <%= button_to movie_rating_path(movie),
+        method: :patch,
+        params: { rating: n + 1 },
+        title: "Rate #{n + 1} Stars" do %>
+        <%= inline_svg_tag("star.svg",
+          class: "w-8 h-8 #{star_rating_class(movie, n)}",
+          data: {
+            star_bar_target: "star",
+            star_bar_star_index_param: n,
+            action: "pointerenter->star-bar#enter
+              pointerleave->star-bar#leave"
+          }) %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <p>
+    <%= movie.summary %>
+  </p>
+<% end %>

@@ -24,9 +24,5 @@ class MoviesTest < ApplicationSystemTestCase
     click_on "Rate 5 Stars"
 
     assert_text "Rating Added!"
-
-    click_on "Star Wars: Episode V - The Empire Strikes Back"
-
-    assert_no_text "Rating Added!"
   end
 end
