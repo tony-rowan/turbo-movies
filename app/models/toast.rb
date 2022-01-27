@@ -7,6 +7,6 @@ class Toast
   end
 
   def to_partial_path
-    "toasts/#{type || 'toast'}"
+    "toasts/#{type || "toast"}"
   end
 end
