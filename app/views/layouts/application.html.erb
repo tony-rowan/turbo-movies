@@ -10,7 +10,9 @@
   </head>
 
   <body>
-    <div id="toasts" class="absolute top-0 right-0"></div>
+    <div id="flash">
+      <%= render "layouts/flash" %>
+    </div>
 
     <%= yield %>
   </body>

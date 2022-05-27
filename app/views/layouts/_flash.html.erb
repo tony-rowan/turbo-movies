@@ -1,0 +1,7 @@
+<div class="absolute top-8 right-8">
+  <% flash.each do |key, message| %>
+    <div class="<%= flash_css_class(key) %>">
+      <%= message %>
+    </div>
+  <% end %>
+</div>

@@ -14,11 +14,11 @@
     @apply border-4 border-yellow-700;
   }
 
-  .toast {
-    animation: toast 3s linear 1 both;
+  .flash-animation {
+    animation: flash-animation 3s linear 1 both;
   }
 
-  @keyframes toast {
+  @keyframes flash-animation {
     0% {
       opacity: 0;
       visibility: hidden;

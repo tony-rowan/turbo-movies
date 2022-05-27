@@ -5,7 +5,13 @@ services:
     image: postgres
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+  redis:
+    image: redis
+    volumes:
+      - ./tmp/redis:/data
+    ports:
+      - "6379:6379"
